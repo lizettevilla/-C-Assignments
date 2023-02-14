@@ -1,67 +1,69 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 
-// Create a loop that prints all values from 1-255.
-for (int i = 0; i <=255; i++) {
-    Console.WriteLine(i);
-}
+// Create an integer array with the values 0 through 9 inside.
 
-// Create a new loop that generates 5 random numbers between 10 and 20.
+int[] intArray = new int[] {0,1,2,3,4,5,6,7,8,9};
+
+// Create a string array with the names "Tim", "Martin", "Nikki", and "Sara".
+
+string[] namesArray = new string[] {"Tim", "Martin", "Nikki", "Sara"};
+
+// Create a boolean array of length 10. Then fill it with alternating true/false values, starting with true.
+
+bool[] boolArray = new bool[10];
+for (int i= 0; i < boolArray.Length; i++) {
+    if(i % 2 == 0)
+    {
+        boolArray[i] = true;
+    } else {
+        boolArray[i] = false;
+    }
+ }
+
+// Create a string List of ice cream flavors that holds at least 5 different flavors. 
+
+List<string> Flavors = new List<string>();
+Flavors.Add("Vanilla");
+Flavors.Add("Chocolate");
+Flavors.Add("Strawberry");
+Flavors.Add("Oreo");
+Flavors.Add("Mint Chocolate Chip");
+
+// Output the length of the List after you added the flavors.
+
+Console.WriteLine($"Length of Flavors List: {Flavors.Count}");
+
+
+// Output the third flavor in the List.
+
+Console.WriteLine($"Third Flavor in List: {Flavors[2]}");
+
+
+// Now remove the third flavor using its index location.
+
+Flavors.RemoveAt(2);
+
+
+// Output the length of the List again. It should now be one fewer.
+
+Console.WriteLine($"Length of Flavors List: {Flavors.Count}");
+
+
+// Create a dictionary that will store string keys and string values.
+
+Dictionary<string, string> MyDictionary = new Dictionary<string, string>();
+
+// Add key/value pairs to the dictionary where:
+// Each key is a name from your names array (this can be done by hand or using logic)
+// Each value is a randomly selected flavor from your flavors List (remember Random from earlier?)
 Random rand = new Random();
-    for(int i = 1; i <= 5; i++) {
-        Console.WriteLine(rand.Next(10,21));
-    }
+for(int i = 0; i < namesArray.Length; i++) {
 
-    
-// Modify the previous loop to add the random values together and print the sum after the loop finishes.
-
-
-
-// Create a new loop that prints all values from 1 to 100 that are divisible by 3 OR 5, but NOT both.
-for (int i = 1; i <= 100; i++) 
-{
-    if(i % 3 == 0 && i % 5 == 0)
-    {
-        continue;
-    }
-if(i % 3 == 0 || i % 5 == 0)
- {
-    Console.WriteLine(i);
-}
+MyDictionary.Add(namesArray[i], Flavors[rand.Next(0,Flavors.Count)]);
 }
 
-
-// Modify the previous loop to print "Fizz" for multiples of 3 and "Buzz" for multiples of 5.
-for (int i = 1; i<= 100; i++)
-{
-    if(i % 3 == 0 && i % 5 == 0)
-{
-    continue;
-}
-if(i % 3 == 0)
-{
-    Console.WriteLine($"{i} - Fizz");
-}
-if(i % 5 == 0)
-{
-Console.WriteLine($"{i} - Buzz");
-}
-}
-
-
-// Modify the previous loop once more to now also print "FizzBuzz" for numbers that are multiples of both 3 and 5.
-for (int i = 1; i <= 100; i++)
-{
-    if (i % 3 == 0 && i % 5 == 0)
-    {
-        Console.WriteLine($"{i} - FizzBuzz");
-    }
-    if(i % 3 == 0)
-    {
-        Console.WriteLine($"{i} - Fizz");
-    }
-    if(i % 5 == 0)
-    {
-        Console.WriteLine($"{i} - Buzz");
-    }
+// Loop through the dictionary and print out each user's name and their associated ice cream flavor.
+foreach(KeyValuePair<string, string> entry in MyDictionary) {
+    Console.WriteLine($"{entry.Key} - {entry-Value}");
 }
